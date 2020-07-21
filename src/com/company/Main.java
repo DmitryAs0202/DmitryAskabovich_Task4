@@ -20,24 +20,8 @@ public class Main {
     lastCharWord(s3);
     lastCharWord(s4);
 
-    StringBuilder sb = new StringBuilder(s1);
-    double startTime = System.currentTimeMillis();
-    for (int i = 0; i < 2000; i++) {
-      sb.append(s2);
-    }
-    double finish = System.currentTimeMillis();
-    System.out
-        .println("Сложение строк со StringBuilder: " + (finish - startTime) + " миллисекунд.");
-
-    double startTime2 = System.currentTimeMillis();
-    for (int i = 0; i < 2000; i++) {
-      s1 = s1 + s2;
-    }
-    double finish2 = System.currentTimeMillis();
-    System.out
-        .println("Сложение строк без StringBuilder: " + (finish2 - startTime2) + " миллисекунд.");
-
-
+    strBuildAdd(s1, s2);
+    stringAdd(s1, s2);
   }
 
   static void countingPunctuationMarks(String s) {
@@ -53,7 +37,6 @@ public class Main {
       if (c == '(' || c == ')' || c == '"') {
         ++charNumber;
       }
-
     }
     System.out.println("Количество знаков препинания: " + charNumber);
   }
@@ -89,4 +72,26 @@ public class Main {
     }
     System.out.println();
   }
+
+  static void strBuildAdd(String s1, String s2) {
+    StringBuilder sb = new StringBuilder(s1);
+    double startTime = System.currentTimeMillis();
+    for (int i = 0; i < 2000; i++) {
+      sb.append(s2);
+    }
+    double finish = System.currentTimeMillis();
+    System.out
+        .println("Сложение строк со StringBuilder: " + (finish - startTime) + " миллисекунд.");
+  }
+
+  static void stringAdd(String s1, String s2) {
+    double startTime2 = System.currentTimeMillis();
+    for (int i = 0; i < 2000; i++) {
+      s1 = s1 + s2;
+    }
+    double finish2 = System.currentTimeMillis();
+    System.out
+        .println("Сложение строк без StringBuilder: " + (finish2 - startTime2) + " миллисекунд.");
+  }
+
 }
